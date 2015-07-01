@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'posts#index'
-  get 'posts/search', :to => 'posts#search'
   resources :posts do
     resources :reviews
   end

@@ -1,25 +1,32 @@
-<h1><%= @post.title %></h1>
-<h4><%= @post.description %></h4>
+<div class="col-md-6">
+  <h1><%= @post.title %></h1>
+  <h4><%= @post.description %></h4>
 
-<%= render 'layouts/rating_star', rating: @post.rating %>
+  <%= render 'layouts/rating_star', rating: @post.rating %>
 
-<h3>Posted By: <%= @post.user %> on: <%= @post.formatted_time%></h3>
+  <h5>Posted By: <%= @post.user %> on: <%= @post.formatted_time%></h5>
 
-<img src="<%= @post.posterURL %>" alt="" /> 
-
-<%= link_to "Add a review", new_post_review_path(@post) %>
-
-<%= link_to 'Posts', posts_path %>
-
-<% @post.reviews.each do |review| %>
+  <img src="<%= @post.posterURL %>" alt="" />
+</div>
+<div class="col-md-6">
+  <h2>User Reviews</h2>
   <div>
-    <%= review.user %>
-    <%= review.content %>
-    <%= render 'layouts/rating_star', rating: review.rating %>
-    <div>
-      <%= link_to "Edit", edit_post_review_path(@post, review)%> | <%= link_to "Delete", post_review_path(@post, review) ,
-                                            :data => {:confirm => "Are you sure?",
-                                                      :method => "delete"} %>
-    </div>
+    <%= link_to "Add a review", new_post_review_path(@post) %>
   </div>
-<% end %>
+  <div>
+    <% @post.reviews.each do |review| %>
+      <hr>
+      <%= review.user %> says:
+      <br><br>
+      "<%= review.content %>" -
+      <%= render 'layouts/rating_star', rating: review.rating %>
+      <br><br>
+      <div>
+        <%= link_to "Edit", edit_post_review_path(@post, review)%> | <%= link_to "Delete", post_review_path(@post, review) ,
+        :data => {:confirm => "Are you sure?",
+          :method => "delete"} %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

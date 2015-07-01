@@ -1,9 +1,15 @@
-<%= form_for [@post, @review] do |f| %>
-<%= f.label :user %>
-<%= f.text_field :user %>
-<%= f.label :content %>
-<%= f.text_field :content %>
-<%= f.label :rating %>
-<%= f.text_field :rating %>
-<p><%= f.submit %></p>
+<%= form_for [@post, @review], :html => {:class => "form"} do |f| %>
+<div class="form-group">
+  <%= f.label :user %>
+  <%= f.text_field :user, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :content %>
+  <%= f.text_field :content, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :rating %>
+  <%= f.text_field :rating, class: "form-control" %>
+</div>
+<p><%= f.submit class: 'btn btn-default' %></p>
 <% end %>

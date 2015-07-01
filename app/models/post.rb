@@ -20,4 +20,13 @@ class Post  < ActiveRecord::Base
     response = HTTParty.get("http://www.omdbapi.com/?t=#{input}&y=&plot=short&r=json")
     return response.parsed_response["Poster"]
   end
+
+  def self.Search(searchString)
+    result = self.basic_search(title: searchString)
+    if result.kind_of?(Array)
+      return result
+    else
+      return []
+    end
+  end
 end

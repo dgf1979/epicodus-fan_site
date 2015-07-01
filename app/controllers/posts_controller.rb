@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   def index
     # @posts = Post.all
     @posts = Post.all.order(params[:sort])
+    @search_results = Post.search(params[:search_string])
   end
 
   def show

@@ -12,7 +12,7 @@
         <%= link_to "Posted On", :sort => 'created_at' %>
       </th>
       <th>
-        <%= link_to "Rating", :sort => 'rating DESC' %>
+        <%= link_to "Average Rating", :sort => 'rating DESC' %>
       </th>
       <th>
 
@@ -30,7 +30,7 @@
         <%= (post.formatted_time)%>
       </td>
       <td>
-        <%= render 'layouts/rating_star', rating: post.rating %>
+        <%= render 'layouts/rating_star', rating: post.average_review_score %>
       </td>
       <td>
         <%= link_to "Edit", edit_post_path(post)%> | <%= link_to "Delete", post_path(post) ,

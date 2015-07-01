@@ -30,9 +30,7 @@
         <%= (post.formatted_time)%>
       </td>
       <td>
-        <% post.rating.times do %>
-        <span class="glyphicon glyphicon-star rating"></span>
-        <% end %>
+        <%= render 'layouts/rating_star', rating: post.rating %>
       </td>
       <td>
         <%= link_to "Edit", edit_post_path(post)%> | <%= link_to "Delete", post_path(post) ,

@@ -1,11 +1,23 @@
 <h1><%= @post.title %></h1>
 <h4><%= @post.description %></h4>
 
-<% @post.rating.times do %>
-  <span class="glyphicon glyphicon-star rating"></span>
-<% end %>
+<%= render 'layouts/rating_star', rating: @post.rating %>
 
 <h3>Posted By: <%= @post.user %> on: <%= @post.formatted_time%></h3>
 
+<%= link_to "Add a review", new_post_review_path(@post) %>
 
 <%= link_to 'Posts', posts_path %>
+
+<% @post.reviews.each do |review| %>
+  <div>
+    <%= review.user %>
+    <%= review.content %>
+    <%= render 'layouts/rating_star', rating: review.rating %>
+    <div>
+      <%= link_to "Edit", edit_post_review_path(@post, review)%> | <%= link_to "Delete", post_review_path(@post, review) ,
+                                            :data => {:confirm => "Are you sure?",
+                                                      :method => "delete"} %>
+    </div>
+  </div>
+<% end %>

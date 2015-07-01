@@ -5,7 +5,7 @@
   <span class="glyphicon glyphicon-star rating"></span>
 <% end %>
 
-<h3><%= @post.user %></h3>
+<h3>Posted By: <%= @post.user %> on: <%= @post.formatted_time%></h3>
 
 
 <%= link_to 'Posts', posts_path %>

@@ -12,6 +12,7 @@ gem 'autoprefixer-rails'
 gem 'capybara'
 gem 'pry'
 gem 'textacular'
+gem 'httparty'
 
 
 group :development do

@@ -5,6 +5,8 @@
 
 <h3>Posted By: <%= @post.user %> on: <%= @post.formatted_time%></h3>
 
+<img src="<%= @post.posterURL %>" alt="" /> 
+
 <%= link_to "Add a review", new_post_review_path(@post) %>
 
 <%= link_to 'Posts', posts_path %>

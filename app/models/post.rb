@@ -14,4 +14,10 @@ class Post  < ActiveRecord::Base
       return 1
     end
   end
+
+  def posterURL
+    input = self.title.sub(" ", "+")
+    response = HTTParty.get("http://www.omdbapi.com/?t=#{input}&y=&plot=short&r=json")
+    return response.parsed_response["Poster"]
+  end
 end

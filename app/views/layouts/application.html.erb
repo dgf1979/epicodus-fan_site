@@ -8,7 +8,23 @@
 </head>
 <body>
 
-<%= yield %>
+  <div class="container-fluid">
+    <div class="row site-head">
+      <div class="col-md-10 col-md-offset-1 well">
+        <span class="page-title">Western Samurai Films</span>
+        <div class="nav-links">
+          <span><%= link_to 'Add Post', new_post_path %></span>
+        </div>
+        <span style="color: red;"><%= flash[:alert] %></span>
+        <span style="color: blue;"><%= flash[:notice] %></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1 well">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>

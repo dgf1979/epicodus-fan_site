@@ -1,11 +1,43 @@
-<%= link_to 'Add Post', new_post_path %>
+<div>
 
-<ul>
-  <% @posts.each do |post| %>
-    <li><%= post.title %> - Posted By: <%= post.user %></li>
-    <%= link_to "Edit", edit_post_path(post)  %>  |
-    <%= link_to "Delete", post_path(post),
-                    :data => {:confirm => "Are you sure?",
-                              :method => "delete"} %>
-  <% end %>
-</ul>
+  <table class="posts">
+    <tr>
+      <th>
+        Title
+      </th>
+      <th>
+        Posted By
+      </th>
+      <th>
+        Description
+      </th>
+      <th>
+        Rating
+      </th>
+      <th>
+
+      </th>
+    </tr>
+    <% @posts.each do |post| %>
+    <tr>
+      <td>
+        <%= post.title %>
+      </td>
+      <td>
+        <%= post.user %>
+      </td>
+      <td>
+        <%= post.description %>
+      </td>
+      <td>
+        <%= post.rating %>
+      </td>
+      <td>
+        <%= link_to "Edit", edit_post_path(post)%> | <%= link_to "Delete", post_path(post) ,
+        :data => {:confirm => "Are you sure?",
+          :method => "delete"} %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
